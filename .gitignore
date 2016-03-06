@@ -1,0 +1,10 @@
+# Ignore for templates
+
+*/*/build.sh
+
+# Ignore for Packer:
+# Cache objects
+# Built boxes
+
+packer_cache/
+*.box
