@@ -125,7 +125,7 @@
           "version": "{{user `version`}}"
         },
         "only": [
-          "virtualbox-iso"
+          "qemu-iso"
         ],
         "type": "atlas"
       },
