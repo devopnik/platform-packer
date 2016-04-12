@@ -147,7 +147,7 @@
     {
       "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
       "override": {
-        "qemu": {
+        "<%= PROVISOR %>" : {
           "scripts": [
             "scripts/base.sh",
             "scripts/vagrant.sh",
@@ -176,18 +176,18 @@
     }
   ],
   "variables": {
-    "atlas_name": "centos-7.2",
-    "atlas_username": "devopnik",
-    "disk_size": "10000",
-    "guest_os_type": "RedHat_64",
-    "iso_checksum": "88c0437f0a14c6e2c94426df9d43cd67",
-    "iso_checksum_type": "md5",
-    "iso_url": "http://centos.mirrors.hoobly.com/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso",
-    "mem_size": "2048",
-    "numvcpus": "2",
-    "ssh_password": "vagrant",
-    "ssh_username": "vagrant",
-    "version": "0.0.1",
-    "vm_name": "centos-7-2-x64"
+    "atlas_name": "<%= ENV['ATLAS_NAME'] %>",
+    "atlas_username": "<%= ENV['ATLAS_USERNAME'] %>",
+    "disk_size": "<%= ENV['DISK_SIZE'] %>",
+    "guest_os_type": "<%= ENV['GUEST_OS_TYPE'] %>",
+    "iso_checksum": "<%= ENV['ISO_CHECKSUM'] %>",
+    "iso_checksum_type": "<%= ENV['ISO_CHECKSUM_TYPE'] %>",
+    "iso_url": "<%= ENV['ISO_URL'] %>",
+    "mem_size": "<%= ENV['MEM_SIZE'] %>",
+    "numvcpus": "<%= ENV['NUMVCPUS'] %>",
+    "ssh_password": "<%= ENV['SSH_PASSWORD'] %>",
+    "ssh_username": "<%= ENV['SSH_USERNAME'] %>",
+    "version": "<%= ENV['VMVERSION'] %>",
+    "vm_name": "<%= ENV['VM_NAME'] %>"
   }
 }
