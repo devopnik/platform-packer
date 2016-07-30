@@ -1,0 +1,26 @@
+# Parameters we want set
+export ATLAS_USERNAME=
+export ATLAS_NAME=
+
+#for vmware use hard coded redhat for it to build correctly
+export GUEST_OS_TYPE=
+
+export ISO_CHECKSUM=
+export ISO_CHECKSUM_TYPE=
+export ISO_URL=
+
+# For building a community vagrant box
+export SSH_USERNAME="vagrant"
+export SSH_PASSWORD="vagrant"
+export VM_NAME=
+export VMVERSION="0.0.1"
+
+# For proper builds on lowend machines, need more RAM and CPU
+export DISK_SIZE=10000
+export MEM_SIZE=2048
+export NUMVCPUS=2
+# Build the project
+packer build template.json
+
+# To push to Atlas to build, replace the variables section and run:
+# `packer push -name $ATLAS_USERNAME/$ATLAS_NAME template.json`

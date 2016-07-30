@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'yaml'
+require 'json'
+
+puts ARGV.join(" ")
+# Load all variables from yaml into environment (except token since it's set)
+VARIABLES=YAML::load(File.read("config/variables.yaml"))
+# Set variables in the environment
+VARIABLES.each do |k,v|
+  puts ENV[k.upcase]=v
+end
+# Convert yaml to json based on ARGV[0]
+template_json=File.open( "tmp/template.json","w" )
+template_json<<JSON.pretty_generate(YAML.load(File.read("config/#{( ARGV=='virtualbox' ? ARGV.join(" ") : 'vbox'  )}.yaml")))
+template_json.close
+
+# Build the project
+puts exec("packer build tmp/template.json")

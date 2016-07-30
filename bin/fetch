@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'uri'
+
+def open(url)
+  Net::HTTP.get(URI.parse(url))
+end
+page_content = open('https://firstcare.vitalschoice.com/api/features.json').gsub('"','')
+# page_content = open('http://releases.ubuntu.com/16.04/SHA256SUMS')
+# puts page_content.gsub('"','')
+puts page_content
