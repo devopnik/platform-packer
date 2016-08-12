@@ -6,7 +6,11 @@ require 'uri'
 def open(url)
   Net::HTTP.get(URI.parse(url))
 end
-page_content = open('https://firstcare.vitalschoice.com/api/features.json').gsub('"','')
-# page_content = open('http://releases.ubuntu.com/16.04/SHA256SUMS')
-# puts page_content.gsub('"','')
-puts page_content
+ubuntu_release_version=  ARGV[0] || '16.04'
+ubuntu_iso_url="releases.ubuntu.com/#{ubuntu_release_version}/SHA256SUMS"
+ubuntu_iso=''
+centos_iso=''
+ubuntu_sha=''
+centos_sha=''
+  p page_content = open("http://#{ubuntu_iso_url}").split("\n")
+  p page_content.map! {|x| x.split("\s*").reverse}
