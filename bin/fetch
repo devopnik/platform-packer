@@ -2,6 +2,7 @@
 
 require 'net/http'
 require 'uri'
+require 'yaml'
 
 def open(url)
   Net::HTTP.get(URI.parse(url))
@@ -10,7 +11,11 @@ ubuntu_release_version=  ARGV[0] || '16.04'
 ubuntu_iso_url="releases.ubuntu.com/#{ubuntu_release_version}/SHA256SUMS"
 ubuntu_iso=''
 centos_iso=''
-ubuntu_sha=''
 centos_sha=''
-  p page_content = open("http://#{ubuntu_iso_url}").split("\n")
-  p page_content.map! {|x| x.split("\s*").reverse}
+# puts ubuntu_sha = page_content.map! {|x| x.split("\s*").reverse}
+  # p ubuntu_sha = open("http://#{ubuntu_iso_url}").split("\n")
+# puts ubuntu_sha.map{ |k,v| k.to_sym => v }
+p ubuntu_sha = open("http://#{ubuntu_iso_url}").split("\n")
+p sha = Hash[ubuntu_sha.map! {|x| x.split("\s*").reverse}]
+puts sha.to_yaml
+puts sha['ubuntu-16.04-desktop-i386.iso']
